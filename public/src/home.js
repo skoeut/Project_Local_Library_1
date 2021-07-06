@@ -40,7 +40,9 @@ function getMostCommonGenres(books) {
 }
 
 function getMostPopularBooks(books) {
+  //loop through books array 
   const result = books.map((book) => {
+    //create new object for each book object
     let newObj = {}
     newObj = {
       name: book.title,
@@ -52,16 +54,19 @@ function getMostPopularBooks(books) {
   return result
 }
 
-function getMostPopularAuthors(books, authors) {
+function getMostPopularAuthors(books, authors){
+//loop through authors array 
   const result = authors.map((author) => {
-    
+    // to create a new object for each author
     let newObj = {}
       newObj = {
         name: `${author.name.first} ${author.name.last}`,
         count: 0
       }
+      //loop through books array to find match between authorId and bookId 
       books.forEach((book) => {
         if (book.authorId === author.id) {
+          //once a match is found set count equal to length of borrows 
           newObj.count += book.borrows.length
         }
       })
